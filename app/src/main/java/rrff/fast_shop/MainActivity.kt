@@ -7,8 +7,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import rrff.fast_shop.navigation.Screen
-import rrff.fast_shop.ui.LoginScreen
-import rrff.fast_shop.ui.HomeScreen
+import rrff.fast_shop.view.LoginScreen
+import rrff.fast_shop.view.HomeScreen
+import rrff.fast_shop.view.SignUpScreen
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +26,9 @@ class MainActivity : ComponentActivity() {
                 }
                 composable(Screen.Home.route) { // Tela inicial (home)
                     HomeScreen()
+                }
+                composable(Screen.SignUp.route) { // Tela inicial (home)
+                    SignUpScreen(navController)
                 }
             }
 
