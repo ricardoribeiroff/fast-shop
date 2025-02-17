@@ -1,4 +1,4 @@
-package rrff.fast_shop.ui.components
+package rrff.fast_shop.view.component
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -20,6 +20,22 @@ fun ErrorText(
     if (!errorMessage.isNullOrEmpty()) {
         Text(
             text = errorMessage,
+            color = MaterialTheme.colorScheme.error,
+            style = MaterialTheme.typography.bodySmall,
+            modifier = modifier
+        )
+    }
+}
+
+// Nova sobrecarga para aceitar string direta
+@Composable
+fun ErrorText(
+    text: String,
+    modifier: Modifier = Modifier
+) {
+    if (text.isNotEmpty()) {
+        Text(
+            text = text,
             color = MaterialTheme.colorScheme.error,
             style = MaterialTheme.typography.bodySmall,
             modifier = modifier
