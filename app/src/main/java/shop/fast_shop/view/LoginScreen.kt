@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 import androidx.lifecycle.viewmodel.compose.viewModel
 import shop.fast_shop.R
 import shop.fast_shop.ui.theme.white
-import shop.fast_shop.ui.theme.fastShopTheme
+import shop.fast_shop.ui.theme.FastShopTheme
 import shop.fast_shop.view.component.ErrorText
 import shop.fast_shop.viewmodel.LoginViewModel
 import shop.fast_shop.view.component.SwipeToRevealLogin
@@ -40,7 +40,7 @@ fun LoginScreen(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            fastShopTheme {
+            FastShopTheme {
                 Image(
                     painter = painterResource(id = R.drawable.login_background),
                     contentDescription = "background",

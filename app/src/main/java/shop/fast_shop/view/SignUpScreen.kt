@@ -31,7 +31,7 @@ fun SignUpScreen(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            fastShopTheme {
+            FastShopTheme {
                 Image(
                     painter = painterResource(id = R.drawable.login_background),
                     contentDescription = "background",
