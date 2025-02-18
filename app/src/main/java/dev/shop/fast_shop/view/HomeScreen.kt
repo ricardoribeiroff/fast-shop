@@ -1,4 +1,4 @@
-package shop.fast_shop.view
+package dev.shop.fast_shop.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

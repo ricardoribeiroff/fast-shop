@@ -1,4 +1,4 @@
-package shop.fast_shop
+package dev.shop.fast_shop
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -6,10 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import shop.fast_shop.navigation.Screen
-import shop.fast_shop.view.LoginScreen
-import shop.fast_shop.view.HomeScreen
-import shop.fast_shop.view.SignUpScreen
+import dev.shop.fast_shop.navigation.Screen
+import dev.shop.fast_shop.view.LoginScreen
+import dev.shop.fast_shop.view.HomeScreen
+import dev.shop.fast_shop.view.SignUpScreen
 
 
 class MainActivity : ComponentActivity() {

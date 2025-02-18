@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:961541874500:android:48cae9c4fbe3c95059ed11",
         "android_client_info": {
-          "package_name": "shop.fast_shop"
+          "package_name": "dev.shop.fast_shop"
         }
       },
       "oauth_client": [],

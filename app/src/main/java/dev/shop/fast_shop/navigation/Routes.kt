@@ -1,4 +1,4 @@
-package shop.fast_shop.navigation
+package dev.shop.fast_shop.navigation
 
 sealed class Screen(val route: String) {
     object Login : Screen("login")

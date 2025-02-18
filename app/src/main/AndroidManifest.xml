@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Listadecompras"
         tools:targetApi="31">
         <activity
-            android:name="shop.fast_shop.MainActivity"
+            android:name="dev.shop.fast_shop.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Listadecompras">
             <intent-filter>
