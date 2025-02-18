@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "rrff.fast_shop"
+    namespace = "shop.fast_shop"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "rrff.fast_shop"
+        applicationId = "shop.fast_shop"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
