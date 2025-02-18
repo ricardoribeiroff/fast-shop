@@ -1,4 +1,4 @@
-package shop.fast_shop.viewmodel
+package dev.shop.fast_shop.ui.signup
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

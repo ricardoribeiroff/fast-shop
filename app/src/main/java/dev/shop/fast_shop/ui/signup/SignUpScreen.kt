@@ -1,4 +1,4 @@
-package dev.shop.fast_shop.view
+package dev.shop.fast_shop.ui.signup
 
 
 import androidx.compose.foundation.Image
@@ -16,8 +16,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import shop.fast_shop.R
 import shop.fast_shop.ui.theme.*
-import shop.fast_shop.view.component.ErrorText
-import shop.fast_shop.viewmodel.SignUpViewModel
+import dev.shop.fast_shop.ui.component.ErrorText
 
 @Composable
 fun SignUpScreen(

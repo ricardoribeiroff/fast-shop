@@ -1,4 +1,4 @@
-package shop.fast_shop.view.component
+package dev.shop.fast_shop.ui.component
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.Image

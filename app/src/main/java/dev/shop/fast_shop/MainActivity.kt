@@ -7,9 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dev.shop.fast_shop.navigation.Screen
-import dev.shop.fast_shop.view.LoginScreen
-import dev.shop.fast_shop.view.HomeScreen
-import dev.shop.fast_shop.view.SignUpScreen
+import dev.shop.fast_shop.ui.login.LoginScreen
+import dev.shop.fast_shop.ui.home.HomeScreen
+import dev.shop.fast_shop.ui.signup.SignUpScreen
 
 
 class MainActivity : ComponentActivity() {

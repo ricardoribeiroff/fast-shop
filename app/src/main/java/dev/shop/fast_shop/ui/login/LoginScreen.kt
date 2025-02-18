@@ -1,4 +1,4 @@
-package dev.shop.fast_shop.view
+package dev.shop.fast_shop.ui.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -23,9 +23,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import shop.fast_shop.R
 import shop.fast_shop.ui.theme.white
 import shop.fast_shop.ui.theme.FastShopTheme
-import shop.fast_shop.view.component.ErrorText
-import shop.fast_shop.viewmodel.LoginViewModel
-import shop.fast_shop.view.component.SwipeToRevealLogin
+import dev.shop.fast_shop.ui.component.ErrorText
+import dev.shop.fast_shop.ui.component.SwipeToRevealLogin
 
 
 @Composable
