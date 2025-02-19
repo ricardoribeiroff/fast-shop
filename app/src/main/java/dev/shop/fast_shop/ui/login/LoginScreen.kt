@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.lifecycle.viewmodel.compose.viewModel
 import shop.fast_shop.R
-import shop.fast_shop.ui.theme.white
-import shop.fast_shop.ui.theme.FastShopTheme
+import dev.shop.fast_shop.ui.theme.white
+import dev.shop.fast_shop.ui.theme.FastShopTheme
 import dev.shop.fast_shop.ui.component.ErrorText
 import dev.shop.fast_shop.ui.component.SwipeToRevealLogin
 

@@ -1,4 +1,4 @@
-package shop.fast_shop.ui.theme
+package dev.shop.fast_shop.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

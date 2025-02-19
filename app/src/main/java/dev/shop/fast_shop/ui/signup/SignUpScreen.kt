@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import shop.fast_shop.R
-import shop.fast_shop.ui.theme.*
+import dev.shop.fast_shop.ui.theme.*
 import dev.shop.fast_shop.ui.component.ErrorText
 
 @Composable
