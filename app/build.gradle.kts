@@ -44,12 +44,12 @@ android {
 dependencies {
 
     // Import the Firebase BoM
-    implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
+    implementation(platform(libs.firebase.bom))
 
 
     // TODO: Add the dependencies for Firebase products you want to use
     // When using the BoM, don't specify versions in Firebase dependencies
-    implementation("com.google.firebase:firebase-analytics")
+    implementation(libs.firebase.analytics)
 
 
     // Add the dependencies for any other desired Firebase products
@@ -71,13 +71,15 @@ dependencies {
     implementation(libs.androidx.animation.core.lint)
 
     // Fontes Google
-    implementation("androidx.compose.ui:ui-text-google-fonts:1.6.1")
+    implementation(libs.androidx.ui.text.google.fonts)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.androidx.benchmark.macro)
     implementation(libs.androidx.navigation.runtime.android)
     implementation(libs.androidx.navigation.compose)
 
     testImplementation(libs.junit)
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
+    testImplementation(libs.mockito.inline)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
