@@ -1,6 +1,5 @@
 package dev.shop.fast_shop.ui.signup
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -14,9 +13,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import shop.fast_shop.R
+import dev.shop.fast_shop.R
 import dev.shop.fast_shop.ui.theme.*
 import dev.shop.fast_shop.ui.component.ErrorText
+
 
 @Composable
 fun SignUpScreen(

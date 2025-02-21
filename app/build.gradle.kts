@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "shop.fast_shop"
+    namespace = "dev.shop.fast_shop"
     compileSdk = 35
 
     defaultConfig {
@@ -45,6 +45,10 @@ dependencies {
 
     // Import the Firebase BoM
     implementation(platform(libs.firebase.bom))
+    // Icons
+    implementation("com.composables:icons-lucide:1.0.0")
+
+    implementation("com.composables:icons-lucide:1.0.0")
 
 
     // TODO: Add the dependencies for Firebase products you want to use
@@ -76,7 +80,10 @@ dependencies {
     implementation(libs.androidx.benchmark.macro)
     implementation(libs.androidx.navigation.runtime.android)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.appcompat)
 
+
+    // Testes
     testImplementation(libs.junit)
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
     testImplementation(libs.mockito.inline)

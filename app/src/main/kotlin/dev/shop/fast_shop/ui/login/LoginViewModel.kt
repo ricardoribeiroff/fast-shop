@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import shop.fast_shop.model.LoginState
+import dev.shop.fast_shop.model.LoginState
 import shop.fast_shop.service.AuthService
 
 class LoginViewModel(

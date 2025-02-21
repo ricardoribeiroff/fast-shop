@@ -72,7 +72,9 @@ class SignUpViewModelTest {
     @Test
     fun testRegisterFailure() {
         doAnswer {
-            (it.arguments[3] as Runnable).run()
+            val onFailureCallback = it.arguments[3] as (String) -> Unit
+            onFailureCallback.invoke("Registration failed")
+            null
         }.`when`(authService).register(anyString(), anyString(), MockitoHelper.anyObject(), MockitoHelper.anyObject())
 
         viewModel.onEmailChange("test@example.com")
@@ -82,5 +84,6 @@ class SignUpViewModelTest {
         viewModel.register {}
 
         assertTrue(viewModel.state.showError)
+        assertEquals("Registration failed", viewModel.state.errorMessage)
     }
 }

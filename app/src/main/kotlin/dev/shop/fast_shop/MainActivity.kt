@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     LoginScreen(navController)
                 }
                 composable(Screen.Home.route) { // Tela inicial (home)
-                    HomeScreen()
+                    HomeScreen(navController)
                 }
                 composable(Screen.SignUp.route) { // Tela inicial (home)
                     SignUpScreen(navController)

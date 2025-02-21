@@ -1,4 +1,4 @@
-package shop.fast_shop.model
+package dev.shop.fast_shop.model
 
 data class LoginState(
     val email: String = "",

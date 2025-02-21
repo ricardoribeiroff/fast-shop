@@ -3,5 +3,6 @@
     <string name="error_login_failed">Email ou senha incorretos</string>
     <string name="error_password_length">Senha deve ter no mínimo 6 caracteres</string>
     <string name="error_user_not_entered">Por favor, preencha todos os campos.</string>
+    <string name="title_activity_test">TestActivity</string>
 
 </resources>

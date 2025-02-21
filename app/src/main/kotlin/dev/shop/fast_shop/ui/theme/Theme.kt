@@ -4,19 +4,19 @@ import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
+
 private val DarkColorScheme = darkColorScheme(
-    primary = Blue100,
-    secondary = BlueGrey100,
-    tertiary = Color.DarkGray
+    primary = blue,
+    secondary = white,
+    tertiary = lightBeige
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Blue100,
-    secondary = BlueGrey100,
-    tertiary = Color.DarkGray
+    primary = blue,
+    secondary = black,
+    tertiary = darkBeige
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),

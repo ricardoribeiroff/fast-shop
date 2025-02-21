@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.lifecycle.viewmodel.compose.viewModel
-import shop.fast_shop.R
+import dev.shop.fast_shop.R
 import dev.shop.fast_shop.ui.theme.white
 import dev.shop.fast_shop.ui.theme.FastShopTheme
 import dev.shop.fast_shop.ui.component.ErrorText
