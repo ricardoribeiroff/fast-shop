@@ -15,52 +15,50 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'temurin'
-        java-version: '17'
+      # Permissão para o gradlew primeiro!
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
 
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v2
-      with:
-        licenses: |
-          android-sdk-license-5be876d5
-          android-sdk-license-2742d5c5
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
-    - name: Start Emulator
-      uses: reactivecircus/android-emulator-runner@v2
-      with:
-        api-level: 34
-        target: google_apis
-        profile: Pixel_6  # Nome oficial: use "_" em vez de espaço
-        arch: x86_64
-        script: ./gradlew connectedDebugAndroidTest
-        emulator-boot-timeout: 600
-        force-avd-creation: true
-        disable-animations: true
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+        with:
+          licenses: |
+            android-sdk-license-5be876d5
+            android-sdk-license-2742d5c5
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x ./gradlew
-      
-    - name: Build with Gradle
-      run: ./gradlew build --warning-mode all
+      # Passo consolidado: Emulador + Testes Instrumentados
+      - name: Start Emulator and Run Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          profile: Pixel_6
+          arch: x86_64
+          script: |
+            ./gradlew connectedDebugAndroidTest  # Testes instrumentados no emulador
+            ./gradlew test                       # Testes unitários (não requerem emulador)
+          emulator-boot-timeout: 600
+          force-avd-creation: true
+          disable-animations: true
 
-    - name: Cache Gradle packages
-      uses: actions/cache@v3
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          gradle-${{ runner.os }}-
-          
+      # Cache após os testes (opcional)
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
-    - name: Run unit tests
-      run: ./gradlew test
-
-    - name: Run instrumented tests
-      run: ./gradlew connectedAndroidTest
+      # Build geral (opcional, se necessário)
+      - name: Build with Gradle
+        run: ./gradlew build --warning-mode all
