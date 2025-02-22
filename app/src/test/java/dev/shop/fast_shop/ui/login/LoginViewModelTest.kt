@@ -3,7 +3,7 @@ package dev.shop.fast_shop.ui.login
 import org.junit.Assert.*
 import org.junit.Test
 import org.mockito.Mockito.*
-import shop.fast_shop.service.AuthService
+import dev.shop.fast_shop.service.AuthService
 
 class LoginViewModelTest {
 
