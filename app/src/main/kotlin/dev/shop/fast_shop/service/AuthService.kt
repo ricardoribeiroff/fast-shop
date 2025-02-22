@@ -1,4 +1,4 @@
-package shop.fast_shop.service // Atualize o pacote
+package dev.shop.fast_shop.service // Atualize o pacote
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -12,12 +12,17 @@ class AuthService {
         email: String,
         password: String,
         onSuccess: () -> Unit,
-        onFailure: (String) -> Unit
+        onFailure: (String) -> Unit,
     ) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    onSuccess()
+                    val uidUser =  auth.currentUser?.uid
+                    if (uidUser != null) {
+                        onSuccess()
+                    } else {
+                        onFailure("Erro ao recuperar usuário")
+                    }
                 } else {
                     onFailure(task.exception?.message ?: "Erro desconhecido")
                 }

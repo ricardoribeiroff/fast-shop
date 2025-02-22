@@ -1,5 +1,6 @@
 package dev.shop.fast_shop.ui.home
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -30,19 +31,33 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import dev.shop.fast_shop.ui.login.LoginViewModel
 import dev.shop.fast_shop.ui.theme.FastShopTheme
 
 
 
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     navController: NavController,
-    viewModel: HomeViewModel = viewModel()
+    loginViewModel: LoginViewModel = viewModel(),
+    homeViewModel: HomeViewModel = viewModel()
 ) {
-    FastShopTheme(darkTheme = viewModel.isDarkMode) {
+    FastShopTheme(darkTheme = homeViewModel.isDarkMode) {
         Scaffold(
+            topBar = {
+                TopAppBar(
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        titleContentColor = MaterialTheme.colorScheme.primary,
+                    ),
+                    title = {
+                        Text("fast shop")
+                    }
+                )
+            },
             bottomBar = {
                 BottomAppBar(
                     actions = {
@@ -50,10 +65,10 @@ fun HomeScreen(
                             Icon(Icons.Filled.Home, contentDescription = "Home")
                         }
                         IconButton(onClick = {
-                            viewModel.toggleDarkMode()
+                            homeViewModel.toggleDarkMode()
                         }) {
                             AnimatedContent(
-                                targetState = viewModel.state.icon,
+                                targetState = homeViewModel.state.icon,
                                 transitionSpec = {
                                     fadeIn(animationSpec = tween(500)
                                     ) togetherWith fadeOut(animationSpec = tween(500))
@@ -72,32 +87,26 @@ fun HomeScreen(
                         }
                     }
                 ) }
-        ) {innerPadding ->
-            Text(
-                modifier = Modifier.padding(innerPadding),
-                text = "HOME / DASHBOARD"
-            )
-        }
-        Column {
-            HorizontalDivider()
-            ListItem(
-                headlineContent = { Text("Compras do mês") },
-                overlineContent = { Text("18/02/2025") },
-                supportingContent = { Text("Supra") },
-                leadingContent = {
-                    Icon(
-                        Icons.Filled.ShoppingCart,
-                        contentDescription = "Localized description",
-                        modifier = Modifier.padding(top = 14.dp)
+        ) { innerPadding ->
+            Column(modifier = Modifier.padding(innerPadding)) {
+                HorizontalDivider()
+                homeViewModel.products.forEach { product ->
+                    ListItem(
+                        headlineContent = { Text(product.name) },
+                        overlineContent = { Text(product.date.toString()) },
+                        supportingContent = { Text(product.market) },
+                        leadingContent = {
+                            Icon(
+                                Icons.Filled.ShoppingCart,
+                                contentDescription = "Localized description",
+                                modifier = Modifier.padding(top = 14.dp)
+                            )
+                        },
+                        trailingContent = { Text("meta") }
                     )
-                },
-
-                trailingContent = { Text("meta") }
-            )
-            HorizontalDivider()
+                    HorizontalDivider()
+                }
+            }
         }
-
     }
-
-
 }

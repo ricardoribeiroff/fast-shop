@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import dev.shop.fast_shop.model.SignUpState
-import shop.fast_shop.service.AuthService
+import dev.shop.fast_shop.service.AuthService
 
 class SignUpViewModel(
     private val authService: AuthService = AuthService()

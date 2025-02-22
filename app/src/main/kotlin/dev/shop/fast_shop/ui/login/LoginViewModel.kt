@@ -4,11 +4,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import dev.shop.fast_shop.model.LoginState
-import shop.fast_shop.service.AuthService
+import dev.shop.fast_shop.service.AuthService
 
 class LoginViewModel(
-    private val authService: AuthService = AuthService()
+    private val authService: AuthService = AuthService(),
+    val auth: FirebaseAuth = FirebaseAuth.getInstance()
 ) : ViewModel() {
 
     var state by mutableStateOf(LoginState())
@@ -25,6 +27,7 @@ class LoginViewModel(
     fun onTogglePasswordVisibility() {
         state = state.copy(passwordVisible = !state.passwordVisible)
     }
+
 
     fun login(onSuccess: () -> Unit) {
         if (state.email.isEmpty() || state.password.isEmpty()) {
