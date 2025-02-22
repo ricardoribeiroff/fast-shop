@@ -44,7 +44,7 @@ jobs:
       with:
         api-level: 34
         arch: x86_64
-        profile: Pixel 6 Pro
+        profile: Pixel 6
         target: google_apis
         script: ./gradlew connectedDebugAndroidTest
 
