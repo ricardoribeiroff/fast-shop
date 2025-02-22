@@ -26,6 +26,9 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x ./gradlew
+      
+    - name: Build with Gradle
+      run: ./gradlew build
 
     - name: Cache Gradle packages
       uses: actions/cache@v3
@@ -35,9 +38,6 @@ jobs:
           ~/.gradle/wrapper
         key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           gradle-${{ runner.os }}-
-
-    - name: Build with Gradle
-      run: ./gradlew build
 
     - name: Run unit tests
       run: ./gradlew test
