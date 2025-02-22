@@ -38,6 +38,13 @@ jobs:
           ~/.gradle/wrapper
         key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           gradle-${{ runner.os }}-
+          
+    - name: Start Emulator
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 34
+        arch: x86_64
+        profile: Nexus 6
 
     - name: Run unit tests
       run: ./gradlew test
