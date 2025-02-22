@@ -41,7 +41,7 @@ jobs:
         with:
           api-level: 34
           target: google_apis
-          profile: Pixel_6
+          profile: Nexus 6
           arch: x86_64
           script: |
             ./gradlew connectedDebugAndroidTest  # Testes instrumentados no emulador
