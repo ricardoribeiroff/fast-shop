@@ -3,7 +3,7 @@ package dev.shop.fast_shop.ui.signup
 import org.junit.Assert.*
 import org.junit.Test
 import org.mockito.Mockito.*
-import shop.fast_shop.service.AuthService
+import dev.shop.fast_shop.service.AuthService
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mockito
 import org.mockito.Mockito.doAnswer
