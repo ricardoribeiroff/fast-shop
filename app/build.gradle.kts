@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "rrff.fast_shop"
+    namespace = "dev.shop.fast_shop"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "rrff.fast_shop"
+        applicationId = "dev.shop.fast_shop"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -44,13 +44,19 @@ android {
 dependencies {
 
     // Import the Firebase BoM
-    implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
+    implementation(platform(libs.firebase.bom))
+    // Icons
+    implementation("com.composables:icons-lucide:1.0.0")
+
+    implementation("com.composables:icons-lucide:1.0.0")
 
 
     // TODO: Add the dependencies for Firebase products you want to use
     // When using the BoM, don't specify versions in Firebase dependencies
-    implementation("com.google.firebase:firebase-analytics")
-
+    implementation(libs.firebase.analytics)
+    implementation(platform("com.google.firebase:firebase-bom:32.2.3"))
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.gms:google-services:4.4.2")
 
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
@@ -71,13 +77,18 @@ dependencies {
     implementation(libs.androidx.animation.core.lint)
 
     // Fontes Google
-    implementation("androidx.compose.ui:ui-text-google-fonts:1.6.1")
+    implementation(libs.androidx.ui.text.google.fonts)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.androidx.benchmark.macro)
     implementation(libs.androidx.navigation.runtime.android)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.appcompat)
 
+
+    // Testes
     testImplementation(libs.junit)
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
+    testImplementation(libs.mockito.inline)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
