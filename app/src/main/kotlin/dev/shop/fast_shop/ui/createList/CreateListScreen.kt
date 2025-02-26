@@ -1,4 +1,4 @@
-package dev.shop.fast_shop.ui.home
+package dev.shop.fast_shop.ui.createList
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedContent
@@ -6,49 +6,51 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import dev.shop.fast_shop.data.DatabaseHelper
+import dev.shop.fast_shop.ui.component.DateVisualTransformation
+import dev.shop.fast_shop.ui.home.CreateListViewModel
+import dev.shop.fast_shop.ui.home.HomeViewModel
 import dev.shop.fast_shop.ui.theme.FastShopTheme
-import java.util.Date
-
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import com.google.firebase.Timestamp
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(
+fun CreateListScreen(
     navController: NavController,
-    homeViewModel: HomeViewModel = viewModel()
+    homeViewModel: HomeViewModel = viewModel(),
+    createListViewModel: CreateListViewModel = viewModel(),
 ) {
-    val dateFormat = java.text.SimpleDateFormat("dd/MM/yyyy")
+    val auth = createListViewModel.auth
+    val state = createListViewModel.state
+    val dbHelper = DatabaseHelper()
     FastShopTheme(darkTheme = homeViewModel.isDarkMode) {
         Scaffold(
             topBar = {
@@ -64,7 +66,7 @@ fun HomeScreen(
                     )
                     Text(
                         modifier = Modifier.padding(top = 140.dp),
-                        text = "Minhas Listas",
+                        text = "Criar Lista",
                         style = MaterialTheme.typography.displaySmall,
                         fontSize = 20.sp,
                         color = MaterialTheme.colorScheme.primary
@@ -96,7 +98,19 @@ fun HomeScreen(
                     floatingActionButton = {
                         FloatingActionButton(
                             containerColor = MaterialTheme.colorScheme.onPrimary,
-                            onClick = { navController.navigate("CreateListScreen") },
+                            onClick = {
+                                val list = createListViewModel.state.copy(
+                                    id ="",
+                                    name = state.name,
+                                    market = state.market,
+                                    date = dbHelper.convertStringToTimestamp(createListViewModel.rawDate)?.toDate(),
+                                    uidUser = auth.currentUser!!.uid
+                                )
+                                createListViewModel.viewModelScope.launch {
+                                    dbHelper.addList(list)
+                                }
+                                navController.navigate("HomeScreen")
+                            },
                             elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
                         ) {
                             Icon(Icons.Filled.Add, "Localized description")
@@ -106,26 +120,50 @@ fun HomeScreen(
         ) { innerPadding ->
             Column(modifier = Modifier
                 .padding(innerPadding)
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-                .offset(y = -20.dp)) {
-                HorizontalDivider()
-                homeViewModel.lists.forEach { product ->
-                    ListItem(
-                        headlineContent = { Text(product.name) },
-//                        overlineContent = { Text(dateFormat.format(Date(product.date.toString())))},
-                        supportingContent = { Text(product.market) },
-                        leadingContent = {
-                            Icon(
-                                Icons.Filled.ShoppingCart,
-                                contentDescription = "Localized description",
-                                modifier = Modifier.padding(top = 14.dp)
-                            )
-                        },
-                        trailingContent = { Text("meta") }
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                }
+                .padding(horizontal = 20.dp)) {
+                Text(
+                    text = "Nome",
+                    style = MaterialTheme.typography.titleLarge)
+                TextField(
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                    ),
+                    value = state.name,
+                    onValueChange = { createListViewModel.onNameChange(it)},
+                )
+                Text(
+                    text = "Estabelecimento",
+                    style = MaterialTheme.typography.titleLarge)
+                TextField(
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                    ),
+                    value = state.market,
+                    onValueChange = { createListViewModel.onMarketChange(it)},
+                )
+                Text(
+                    text = "Data",
+                    style = MaterialTheme.typography.titleLarge)
+                TextField(
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.onPrimary,
+                    ),
+                    value = createListViewModel.rawDate,
+                    onValueChange = { date ->
+                        createListViewModel.onDateChange(date)
+                    },
+                    visualTransformation = DateVisualTransformation(),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Number,
+                        imeAction = ImeAction.Done
+                    ),
+                    placeholder = { Text("dd/mm/yy") },
+                )
             }
         }
     }
 }
+

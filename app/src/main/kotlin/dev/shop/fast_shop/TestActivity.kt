@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dev.shop.fast_shop.navigation.Screen
+import dev.shop.fast_shop.ui.createList.CreateListScreen
 import dev.shop.fast_shop.ui.home.HomeScreen
 import dev.shop.fast_shop.ui.login.LoginScreen
 import dev.shop.fast_shop.ui.signup.SignUpScreen
@@ -19,7 +20,7 @@ class TestActivity : ComponentActivity() {
             val navController = rememberNavController() // Cria o NavController
             NavHost(
                 navController = navController,
-                startDestination = Screen.Home.route // Define a tela inicial
+                startDestination = Screen.CreateList.route // Define a tela inicial
             ) {
                 composable(Screen.Login.route) { // Tela de login
                     LoginScreen(navController)
@@ -27,9 +28,13 @@ class TestActivity : ComponentActivity() {
                 composable(Screen.Home.route) { // Tela inicial (home)
                     HomeScreen(navController)
                 }
-                composable(Screen.SignUp.route) { // Tela inicial (home)
+                composable(Screen.SignUp.route) { // Tela registro (SignUp)
                     SignUpScreen(navController)
                 }
+                composable(Screen.CreateList.route) { // Tela criação de lista (CreateList)
+                    CreateListScreen(navController)
+                }
+
             }
 
         }

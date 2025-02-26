@@ -1,6 +1,5 @@
 package dev.shop.fast_shop.ui.login
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -26,14 +25,14 @@ import dev.shop.fast_shop.ui.theme.white
 import dev.shop.fast_shop.ui.theme.FastShopTheme
 import dev.shop.fast_shop.ui.component.ErrorText
 import dev.shop.fast_shop.ui.component.SwipeToRevealLogin
-import dev.shop.fast_shop.ui.home.HomeViewModel
+import dev.shop.fast_shop.ui.home.CreateListViewModel
 
 
 @Composable
 fun LoginScreen(
     navController: NavController,
     viewModel: LoginViewModel = viewModel(),
-    homeViewModel: HomeViewModel = viewModel()
+    createListViewModel: CreateListViewModel = viewModel()
 ) {
     val state = viewModel.state
 
@@ -123,7 +122,6 @@ fun LoginScreen(
                         modifier = Modifier
                             .width(250.dp),
                         onClick = {
-                            Log.d("uidUser", "UID DO USUARIO: ${homeViewModel.uidUser}")
                             viewModel.login {
 
                                 navController.navigate("HomeScreen")

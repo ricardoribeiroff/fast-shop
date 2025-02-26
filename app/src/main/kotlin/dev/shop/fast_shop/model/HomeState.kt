@@ -5,4 +5,5 @@ import com.composables.icons.lucide.*
 
 data class HomeState(
     val icon: ImageVector = Lucide.Moon,
-)
+) {
+}

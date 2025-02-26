@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dev.shop.fast_shop.navigation.Screen
+import dev.shop.fast_shop.ui.createList.CreateListScreen
 import dev.shop.fast_shop.ui.login.LoginScreen
 import dev.shop.fast_shop.ui.home.HomeScreen
 import dev.shop.fast_shop.ui.signup.SignUpScreen
@@ -27,8 +28,11 @@ class MainActivity : ComponentActivity() {
                 composable(Screen.Home.route) { // Tela inicial (home)
                     HomeScreen(navController)
                 }
-                composable(Screen.SignUp.route) { // Tela inicial (home)
+                composable(Screen.SignUp.route) { // Tela registro (signUp)
                     SignUpScreen(navController)
+                }
+                composable(Screen.CreateList.route) { // Tela criação de lista (CreateList)
+                    CreateListScreen(navController)
                 }
             }
 
