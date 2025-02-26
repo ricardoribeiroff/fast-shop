@@ -13,4 +13,4 @@ O problema surge principalmente nas idas mais longas ao mercado. Quem nunca fez 
 
 ## 🪫Progresso
 ![login](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDh1ZWdreGNpOWllYTFpeWR5NThvZmxza3d3bzlxNnBvZzdyMTRtaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EPMUlBjV0RDAx9KY8p/giphy.gif)
-
+![login](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3psaXp4YWV4NHo4MGZsZXRqaWx6b2tubjljZXhvYzJzb282c2RsZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zuziosvvyAYCGRjiGe/giphy.gif)
